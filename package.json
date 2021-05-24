@@ -1,0 +1,95 @@
+{
+  "name": "@webfrontstudio/paint",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "./packages/content/*",
+    "./packages/control/*",
+    "./packages/feedback/*",
+    "./packages/layout/*",
+    "./packages/navigation/*",
+    "./packages/style"
+  ],
+  "description": "React components for Webfront Studio websites",
+  "keywords": [
+    "react",
+    "components",
+    "storybook",
+    "accessibility"
+  ],
+  "homepage": "https://github.com/webfrontstudio/paint#readme",
+  "bugs": {
+    "url": "https://github.com/webfrontstudio/paint/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webfrontstudio/paint.git"
+  },
+  "license": "MIT",
+  "author": "Evelyn Hathaway <npm@evelyn.dev> (https://evelyn.dev)",
+  "scripts": {
+    "build": "npm run build-scss-types && npm run build --workspaces",
+    "build-scss-types": "tsm packages --nameFormat none --includePaths ./",
+    "build-storybook": "build-storybook",
+    "lint": "eslint ./",
+    "prepare": "husky install",
+    "test": "jest",
+    "storybook": "start-storybook -p 6006"
+  },
+  "commitlint": {
+    "extends": "./node_modules/conventional-changelog-evelyn/commitlint.config.js"
+  },
+  "lint-staged": {
+    "**/package.json": "sort-package-json",
+    "./": "eslint --fix"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@storybook/addon-a11y": "^6.2.9",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-storyshots": "^6.2.9",
+    "@storybook/react": "^6.2.9",
+    "@storybook/theming": "^6.2.9",
+    "@types/jest": "^26.0.23",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.24.0",
+    "babel-loader": "^8.2.2",
+    "commitlint": "^12.1.4",
+    "conventional-changelog-evelyn": "^1.3.0",
+    "css-loader": "^5.2.5",
+    "eslint": "^7.27.0",
+    "eslint-plugin-evelyn": "^6.0.2",
+    "eslint-plugin-import": "^2.23.3",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-regexp": "^0.10.0",
+    "eslint-plugin-unicorn": "^32.0.1",
+    "husky": "^6.0.0",
+    "jest": "^26.6.3",
+    "lint-staged": "^11.0.0",
+    "mini-css-extract-plugin": "^1.6.0",
+    "multi-semantic-release": "^2.8.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass": "^1.34.0",
+    "sass-loader": "^10.2.0",
+    "semantic-release": "^17.4.3",
+    "sort-package-json": "^1.50.0",
+    "storybook-addon-designs": "^6.0.0",
+    "style-loader": "^2.0.0",
+    "ts-jest": "^26.5.6",
+    "typed-scss-modules": "^4.1.1",
+    "typescript": "^4.2.4"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "release": {
+    "extends": "conventional-changelog-evelyn/release.config.js"
+  }
+}

@@ -1,0 +1,26 @@
+@use "augmentation/paint/button" as augmentation;
+
+
+.button {
+	display: inline-block;
+	line-height: 1;
+	border-radius: 4px;
+	padding: 10px 14px;
+	font-weight: 800;
+
+	// Raised
+	&.primary {
+	}
+
+	// Outline
+	&.secondary {
+		padding: 8px 14px;
+		border: 2px solid currentColor;
+	}
+
+	// Flat
+	&.tertiary {
+	}
+
+	@include augmentation.button;
+}

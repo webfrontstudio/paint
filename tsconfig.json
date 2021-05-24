@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"module": "CommonJS",
+		"target": "es6",
+		"lib": [
+			"dom",
+			"esnext"
+		],
+		"strict": true,
+		"esModuleInterop": true,
+		"moduleResolution": "node",
+		"declaration": true,
+		"incremental": true,
+		"sourceMap": true,
+		"composite": true,
+		"forceConsistentCasingInFileNames": true,
+		"jsx": "react-jsx",
+	},
+	"include": [
+		"packages",
+		"stories",
+	],
+}
