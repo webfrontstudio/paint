@@ -13,7 +13,7 @@ export const strawberry = new Map([
 	["A100", "#FB0536"],
 	["A200", "#E30040"],
 	["A400", "#C10037"],
-	["A600", "#8D0101"]
+	["A600", "#8D0101"],
 ]);
 
 export const orange = new Map([
@@ -29,7 +29,7 @@ export const orange = new Map([
 	["A100", "#FF8B08"],
 	["A200", "#FF7C00"],
 	["A400", "#F96400"],
-	["A600", "#E04800"]
+	["A600", "#E04800"],
 ]);
 
 export const mango = new Map([
@@ -45,7 +45,7 @@ export const mango = new Map([
 	["A100", "#FFB80E"],
 	["A200", "#FFA900"],
 	["A400", "#FB9100"],
-	["A600", "#E46D00"]
+	["A600", "#E46D00"],
 ]);
 
 export const banana = new Map([
@@ -61,7 +61,7 @@ export const banana = new Map([
 	["A100", "#FFE514"],
 	["A200", "#FFD500"],
 	["A400", "#FCBE00"],
-	["A600", "#E89100"]
+	["A600", "#E89100"],
 ]);
 
 export const lime = new Map([
@@ -77,7 +77,7 @@ export const lime = new Map([
 	["A100", "#A1FF00"],
 	["A200", "#8BED00"],
 	["A400", "#67C900"],
-	["A600", "#45A400"]
+	["A600", "#45A400"],
 ]);
 
 export const mint = new Map([
@@ -93,7 +93,7 @@ export const mint = new Map([
 	["A100", "#54F376"],
 	["A200", "#33E46D"],
 	["A400", "#05B85D"],
-	["A600", "#048A5C"]
+	["A600", "#048A5C"],
 ]);
 
 export const taffy = new Map([
@@ -109,7 +109,7 @@ export const taffy = new Map([
 	["A100", "#19F3CA"],
 	["A200", "#00EBCD"],
 	["A400", "#00CBC8"],
-	["A600", "#0092AE"]
+	["A600", "#0092AE"],
 ]);
 
 export const cottonCandy = new Map([
@@ -125,7 +125,7 @@ export const cottonCandy = new Map([
 	["A100", "#1AF2FF"],
 	["A200", "#00E4FF"],
 	["A400", "#00C8F3"],
-	["A600", "#0099D3"]
+	["A600", "#0099D3"],
 ]);
 
 export const blueberry = new Map([
@@ -141,7 +141,7 @@ export const blueberry = new Map([
 	["A100", "#07A4FF"],
 	["A200", "#0097FF"],
 	["A400", "#007CF3"],
-	["A600", "#005BD3"]
+	["A600", "#005BD3"],
 ]);
 
 export const plum = new Map([
@@ -157,7 +157,7 @@ export const plum = new Map([
 	["A100", "#5C8FFD"],
 	["A200", "#3E6CFC"],
 	["A400", "#052AF0"],
-	["A600", "#0011CF"]
+	["A600", "#0011CF"],
 ]);
 
 export const grape = new Map([
@@ -173,7 +173,7 @@ export const grape = new Map([
 	["A100", "#C67EFA"],
 	["A200", "#AF54F9"],
 	["A400", "#7C0DED"],
-	["A600", "#6000CB"]
+	["A600", "#6000CB"],
 ]);
 
 export const dragonfruit = new Map([
@@ -189,7 +189,7 @@ export const dragonfruit = new Map([
 	["A100", "#FF006B"],
 	["A200", "#EB007A"],
 	["A400", "#CE006B"],
-	["A600", "#AA3C73"]
+	["A600", "#AA3C73"],
 ]);
 
 export const latte = new Map([
@@ -201,7 +201,7 @@ export const latte = new Map([
 	["600", "#A24F28"],
 	["700", "#923A18"],
 	["800", "#822E13"],
-	["900", "#72210E"]
+	["900", "#72210E"],
 ]);
 
 export const cocoa = new Map([
@@ -213,7 +213,7 @@ export const cocoa = new Map([
 	["600", "#644639"],
 	["700", "#57392D"],
 	["800", "#4A2D24"],
-	["900", "#3D211B"]
+	["900", "#3D211B"],
 ]);
 
 export const silver = new Map([
@@ -225,7 +225,7 @@ export const silver = new Map([
 	["600", "#95969B"],
 	["700", "#7E8087"],
 	["800", "#6A6C74"],
-	["900", "#555761"]
+	["900", "#555761"],
 ]);
 
 export const slate = new Map([
@@ -237,7 +237,7 @@ export const slate = new Map([
 	["600", "#384759"],
 	["700", "#273445"],
 	["800", "#1B2432"],
-	["900", "#0E141F"]
+	["900", "#0E141F"],
 ]);
 
 export const black = new Map([
@@ -249,5 +249,5 @@ export const black = new Map([
 	["600", "#272727"],
 	["700", "#1A1A1A"],
 	["800", "#0D0D0D"],
-	["900", "#000000"]
+	["900", "#000000"],
 ]);
