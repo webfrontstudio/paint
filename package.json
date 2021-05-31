@@ -26,10 +26,11 @@
   "scripts": {
     "build": "npm run build-scss-types && npm run build --workspaces",
     "build-scss-types": "tsm packages --nameFormat none --includePaths ./packages/style/src, ./node_modules/sanitize.css",
-    "build-storybook": "npm run build-storybook --workspace apps/storybook",
+    "build-storybook": "npm run build --workspace apps/storybook",
     "lint": "eslint ./",
     "prepare": "husky install",
     "test": "jest",
+    "test-scss-types": "npm run build-scss-types -- --listDifferent",
     "storybook": "npm run storybook --workspace apps/storybook"
   },
   "commitlint": {

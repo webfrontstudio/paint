@@ -24,7 +24,7 @@
     "./apps/*"
   ],
   "scripts": {
-    "build-storybook": "build-storybook",
+    "build": "build-storybook",
     "storybook": "start-storybook -p 6006"
   }
 }

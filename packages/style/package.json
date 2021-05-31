@@ -25,7 +25,8 @@
   },
   "files": [
     "/lib",
-    "/*.scss"
+    "/src/*.scss",
+    "/src/*.scss.d.ts"
   ],
   "scripts": {
     "build": "tsc",

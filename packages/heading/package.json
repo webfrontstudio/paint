@@ -24,10 +24,12 @@
     "lib": "/lib"
   },
   "files": [
-    "/lib"
+    "/lib",
+    "/src/*.scss",
+    "/src/*.scss.d.ts"
   ],
   "scripts": {
-    "build": "tsc && cd ./src && cp --parents ./**/*.scss ../lib",
+    "build": "tsc",
     "test": "jest -c ../../../jest.config.js"
   },
   "dependencies": {
