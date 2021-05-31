@@ -1,0 +1,105 @@
+@use "sass:map";
+@use "sass:color";
+@use "accessible-color";
+
+
+@mixin shadow-helper($color, $baseAlpha) {
+	box-shadow: 0 4px 6px 2px rgba($color, $baseAlpha);
+	&:hover {
+		box-shadow: 0 4px 8px 3px rgba($color, $baseAlpha + 0.2);
+	}
+	&:active {
+		box-shadow: 0 2px 4px rgba($color, $baseAlpha);
+	}
+}
+// Shadow used for white/light gray backgrounds
+// - Tinted for colored material
+@mixin shadow-light($color-map) {
+	@include shadow-helper(map.get($color-map, 500), 0.2);
+}
+// Shadow used for non-white/light gray backgrounds
+// - Tinted for colored backgrounds
+@mixin shadow-dark($color-map) {
+	@include shadow-helper(map.get($color-map, 800), 0.2);
+}
+
+// Color mixins for changing material color
+@mixin color-extra-light($color-map, $interactive: false) {
+	$color: accessible-color.dark-hint($color-map);
+	$background-color: #FFF;
+	color: $color;
+	background-color: $background-color;
+	@if $interactive {
+		&:hover {
+			$background-color: accessible-color.find($color, $color-map, "lightest", 1.5);
+			$color: accessible-color.find($background-color, $color-map, "lowest");
+			color: $color;
+			background-color: $background-color;
+		}
+		&:active {
+			$background-color: color.scale(accessible-color.find($background-color, $color-map, "lightest", 1.5), $lightness: 25%);
+			$color: accessible-color.find($background-color, $color-map, "lowest");
+			color: $color;
+			background-color: $background-color;
+		}
+	}
+}
+
+@mixin color-light($color-map, $interactive: false) {
+	$color: accessible-color.hint($color-map);
+	$background-color: accessible-color.find($color, $color-map, "lowest");
+	color: $color;
+	background-color: $background-color;
+	@if $interactive {
+		&:hover {
+			$background-color: accessible-color.find($background-color, $color-map, "lightest", 1.5);
+			$color: accessible-color.find($background-color, $color-map, "lowest");
+			color: $color;
+			background-color: $background-color;
+		}
+		&:active {
+			$background-color: color.scale(accessible-color.find($background-color, $color-map, "lightest", 1.5), $lightness: 10%);
+			$color: accessible-color.find($background-color, $color-map, "lowest");
+			color: $color;
+			background-color: $background-color;
+		}
+	}
+}
+
+@mixin color-dark($color-map, $interactive: false) {
+	$color: accessible-color.dark-hint($color-map);
+	$background-color: accessible-color.find($color, $color-map, "lowest");
+	color: $color;
+	background-color: $background-color;
+	@if $interactive {
+		&:hover {
+			$background-color: accessible-color.find($background-color, $color-map, "lightest", 1.5);
+			$color: accessible-color.find($background-color, $color-map, "lowest");
+			color: $color;
+			background-color: $background-color;
+		}
+		&:active {
+			$background-color: color.scale(accessible-color.find($background-color, $color-map, "lightest", 1.5), $lightness: 10%);
+			$color: accessible-color.find($background-color, $color-map, "lowest");
+			color: $color;
+			background-color: $background-color;
+		}
+	}
+}
+
+@mixin color-extra-dark($color-map, $interactive: false) {
+	$color: accessible-color.light-hint($color-map);
+	$background-color: accessible-color.find($color, $color-map, "darkest");
+	color: $color;
+	background-color: $background-color;
+	@if $interactive {
+		&:hover {
+			$background-color: accessible-color.find($background-color, $color-map, "darkest", 1.5);
+			background-color: $background-color;
+		}
+		&:active {
+			$background-color: color.scale(accessible-color.find($background-color, $color-map, "darkest", 1.5), $lightness: -25%);
+			background-color: $background-color;
+		}
+	}
+}

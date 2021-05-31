@@ -1,0 +1,30 @@
+{
+  "name": "@webfrontstudio/paint-storybook",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Storybook documentation for the Paint React components",
+  "keywords": [
+    "react",
+    "components",
+    "storybook",
+    "accessibility"
+  ],
+  "homepage": "https://github.com/webfrontstudio/paint#readme",
+  "bugs": {
+    "url": "https://github.com/webfrontstudio/paint/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webfrontstudio/paint.git"
+  },
+  "license": "MIT",
+  "author": "Evelyn Hathaway <npm@evelyn.dev> (https://evelyn.dev)",
+  "workspaces": [
+    "./packages/*",
+    "./apps/*"
+  ],
+  "scripts": {
+    "build": "build-storybook",
+    "storybook": "start-storybook -p 6006"
+  }
+}

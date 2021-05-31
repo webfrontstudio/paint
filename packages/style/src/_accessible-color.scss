@@ -1,0 +1,158 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:color";
+
+$target: "AA" !default;
+
+
+@function luminance($color) {
+	$colors: (
+		"red": red($color),
+		"green": green($color),
+		"blue": blue($color)
+	);
+
+	@each $name, $value in $colors {
+		$adjusted: 0;
+		$value: math.div($value, 255);
+
+		@if $value < 0.03928 {
+			$value: math.div($value, 12.92);
+		} @else {
+			$value: math.div(($value + .055), 1.055);
+			$value: math.pow($value, 2.4);
+		}
+
+		$colors: map.merge($colors, ($name: $value));
+	}
+
+	@return (map.get($colors, "red") * .2126) + (map.get($colors, "green") * .7152) + (map.get($colors, "blue") * .0722);
+}
+
+@function is-darker($color-a, $color-b) {
+	$luminance-a: luminance($color-a);
+	$luminance-b: luminance($color-b);
+	@return $luminance-b > $luminance-a;
+}
+
+@function contrast($color-a, $color-b) {
+	$luminance-a: luminance($color-a) + 0.05;
+	$luminance-b: luminance($color-b) + 0.05;
+	$ratio: math.div($luminance-a, $luminance-b);
+	@if $luminance-b > $luminance-a {
+		$ratio: math.div(1, $ratio);
+	}
+	@return math.div(math.floor($ratio * 100), 100);
+}
+
+@function required-contrast($target: $target) {
+	// 7:1 for AAA
+	@if $target == "AAA" {
+		@return 7;
+	}
+	// 4.5:1 for AA and AAA Large
+	@if $target == "AA" or $target == "AAA Large" {
+		@return 4.5;
+	}
+	// 3:1 for AA Graphical/UI and AA Large
+	@if $target == "AA Graphical" or $target == "AA UI" or $target == "AA Large" {
+		@return 3;
+	}
+	// In case of a specific number
+	@return $target;
+}
+
+@function pick($main-color, $light-option, $dark-option, $target: $target) {
+	$light-contrast: contrast($main-color, $light-option);
+	$dark-contrast: contrast($main-color, $dark-option);
+	$required-contrast: required-contrast($target);
+
+	@if $light-contrast < $required-contrast and $dark-contrast < $required-contrast {
+		@error "#{$main-color} and #{$light-contrast} are not an accessible color pair (#{$required-contrast}:1 ratio for WCAG #{$target})";
+	}
+
+	@if $light-contrast > $dark-contrast {
+		@return $light-option;
+	} @else {
+		@return $dark-option;
+	}
+}
+
+@function find($main-color, $color-map, $prefer: "lowest", $target: $target) {
+	$required-contrast: required-contrast($target);
+	$key-contrast-map: ();
+	$contrast-key-map: ();
+	@for $index from 1 through 9 {
+		$key: #{$index}00;
+		$contrast: contrast($main-color, map.get($color-map, $key));
+		@if $contrast >= $required-contrast {
+			$key-contrast-map: map.set($key-contrast-map, $key, $contrast);
+			$contrast-key-map: map.set($contrast-key-map, $key, $contrast);
+		}
+	}
+
+	$result-color: null;
+	@if $prefer == "lowest" {
+		$result-color: map.get(
+			$color-map,
+			map.get(
+				$contrast-key-map,
+				math.min(1000, map.keys($contrast-key-map)...)
+			)
+		);
+	}
+	@if $prefer == "highest" {
+		$result-color: map.get(
+			$color-map,
+			map.get(
+				$contrast-key-map,
+				math.max(0, map.keys($contrast-key-map)...)
+			)
+		);
+	}
+	@if $prefer == "lightest" {
+		$result-color: map.get(
+			$color-map,
+			math.min(1000, map.keys($key-contrast-map)...)
+		);
+	}
+	@if $prefer == "darkest" {
+		$result-color: map.get(
+			$color-map,
+			math.max(0, map.keys($key-contrast-map)...)
+		);
+	}
+
+	@if $result-color == null {
+		$result-color: $main-color;
+	}
+
+	@while contrast($main-color, $result-color) < $required-contrast {
+		@if $result-color == white {
+			$result-color: $main-color;
+			$prefer: "darkest";
+		} @else if $result-color == black {
+			$result-color: $main-color;
+			$prefer: "lightest";
+		}
+		@if $prefer == "darkest" {
+			$result-color: color.scale($result-color, $lightness: -2%);
+		} @else {
+			$result-color: color.scale($result-color, $lightness: 2%);
+		}
+    }
+
+    @return $result-color;
+}
+
+@function dark-hint($color-map) {
+	@return color.adjust(map.get($color-map, 900), $lightness: 10%);
+}
+
+@function hint($color-map) {
+	@return color.adjust(map.get($color-map, 500), $lightness: 70%);
+}
+
+@function light-hint($color-map) {
+	@return color.adjust(map.get($color-map, 100), $lightness: 90%);
+}

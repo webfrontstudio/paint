@@ -1,0 +1,41 @@
+{
+  "name": "@webfrontstudio/button",
+  "version": "0.0.0",
+  "description": "Button React components for Webfront Studio websites",
+  "keywords": [
+    "react",
+    "components",
+    "accessibility"
+  ],
+  "homepage": "https://github.com/webfrontstudio/paint#readme",
+  "bugs": {
+    "url": "https://github.com/webfrontstudio/paint/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webfrontstudio/paint.git"
+  },
+  "license": "MIT",
+  "author": "Evelyn Hathaway <npm@evelyn.dev> (https://evelyn.dev)",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "directories": {
+    "lib": "/lib"
+  },
+  "files": [
+    "/lib",
+    "/src/*.scss",
+    "/src/*.scss.d.ts"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "jest -c ../../../jest.config.js"
+  },
+  "dependencies": {
+    "clsx": "^1.1.1"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0"
+  }
+}
