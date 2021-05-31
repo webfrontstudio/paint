@@ -15,9 +15,15 @@
 		"composite": true,
 		"forceConsistentCasingInFileNames": true,
 		"jsx": "react-jsx",
+		"paths": {
+			"@webfrontstudio/*": [
+				"./packages/*",
+			],
+		},
 	},
 	"include": [
 		"packages",
 		"stories",
+		"config",
 	],
 }

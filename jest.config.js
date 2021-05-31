@@ -7,8 +7,11 @@ module.exports = {
 	collectCoverage: true,
 	collectCoverageFrom: [
 		"packages/**/*.{js,ts,jsx,tsx}",
+		"!**/*.d.ts",
+		"!**/lib/**/*",
 		"!**/__tests__/**/*",
 		"!**/*.test.*",
+		"!**/*.stories.*",
 	],
 	coverageThreshold: {
 		global: {
@@ -18,5 +21,12 @@ module.exports = {
 			statements: 100,
 		},
 	},
+	moduleNameMapper: {
+		"\\.(scss|css)$": "identity-obj-proxy",
+	},
+	testEnvironment: "jsdom",
+	setupFilesAfterEnv: [
+		"<rootDir>/config/setup-tests.ts",
+	],
 	verbose: true,
 };

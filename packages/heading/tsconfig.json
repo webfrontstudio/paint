@@ -5,10 +5,10 @@
 		"outDir": "lib",
 	},
 	"include": [
-		"src",
+		"src/",
 	],
 	"exclude": [
-		"lib",
+		"lib/",
 		"**/*.test.*",
 		"**/*.stories.*",
 	],
